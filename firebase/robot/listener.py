@@ -1,5 +1,3 @@
-import requests
-import time
 from firebase_admin import credentials, initialize_app, db
 
 cred = credentials.Certificate("./serviceAccountKey.json")
