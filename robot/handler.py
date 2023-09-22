@@ -19,15 +19,13 @@ def move(speed, angle):
     if speed > 0:
         px.forward(speed)
     else:
-        px.backward(speed)
+        px.backward(speed * -1)
 
-def acceleration_listener(event):
-    speed = event.data
-    move(speed, angle)
-
-def car_direction_listener(event):
-    angle = event.data
-    move(speed, angle)
+def car_listener(event):
+    if (isinstance(event.data, dict)):
+        acceleration = event.data.get('acceleration', 0)
+        direction = event.data.get('direction', 0)
+        move(acceleration, direction)
 
 def car_disco_mode_listener(event):
     print(event.data)
@@ -38,8 +36,7 @@ def car_automatic_mode_listener(event):
 def camera_direction_listener(event):
     print(event.data)
 
-db.reference('/car/acceleration').listen(acceleration_listener)
-db.reference('/car/direction').listen(car_direction_listener)
-db.reference('/car/disco_mode').listen(car_disco_mode_listener)
-db.reference('/car/automatic_mode').listen(car_automatic_mode_listener)
-db.reference('/camera/direction').listen(camera_direction_listener)
+db.reference('/car').listen(car_listener)
+#db.reference('/car/disco_mode').listen(car_disco_mode_listener)
+#db.reference('/car/automatic_mode').listen(car_automatic_mode_listener)
+#db.reference('/camera/direction').listen(camera_direction_listener)

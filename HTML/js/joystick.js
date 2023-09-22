@@ -5,6 +5,19 @@ var movementJoy = new JoyStick('movementJoy', colorConfig);
 let lastCameraJoy = groupJoystickInfo(cameraJoy);
 let lastMovementJoy = groupJoystickInfo(movementJoy);
 
+let shouldSendData = true;
+const robotData = {
+    camera: {
+        direction: 0
+    },
+    car: {
+        acceleration: 0,
+        automatic_mode: false,
+        direction: 0,
+        disco_mode: true
+    }
+};
+
 setInterval(function () {
 
     //CAMERA JOYSTICK
@@ -12,7 +25,7 @@ setInterval(function () {
     if (!deepEqual(currentCameraJoy, lastCameraJoy)) {
         lastCameraJoy = currentCameraJoy;
 
-        updateValue("camera/direction", lastCameraJoy.angle);
+        shouldSendData = true;
 
         console.log("Camera Joy: ", lastCameraJoy);
     }
@@ -23,10 +36,20 @@ setInterval(function () {
     if (!deepEqual(currentMovementJoy, lastMovementJoy)) {
         lastMovementJoy = currentMovementJoy;
 
-        updateValue("/car/acceleration", lastMovementJoy.distance);
-        updateValue("/car/direction", lastMovementJoy.angle);
+        shouldSendData = true;;
 
         console.log("Movement Joy: ", lastMovementJoy);
+    }
+
+    if (shouldSendData) {
+        robotData.camera.direction = lastCameraJoy.angle;
+
+        robotData.car.acceleration = lastMovementJoy.distance;
+        // -7 because the car rotation is a bit offset
+        robotData.car.direction = lastMovementJoy.angle - 7;
+
+        updateValue("/", robotData);
+        shouldSendData = false;
     }
 
 }, 50);
@@ -37,15 +60,29 @@ function groupJoystickInfo(joy) {
     return { angle: getAngle(joy) };
 }
 
+/**
+ * Map degrees to range [-30, 30] (wheels left and right)
+ * @param {*} deg 
+ * @returns 
+ */
 function getAngle(joy) {
-    let rad = Math.atan2(joy.GetY(), joy.GetX()); // In radians
-    let deg = rad * (180 / Math.PI);
+    // Remove unnecessary decimals
+    xValue = Math.floor(joy.GetX());
 
-    return Math.floor(deg);
+    deg = (30 * xValue) / 100;
+
+    return deg;
 }
+
 
 function getDistance(joy) {
     let distance = Math.sqrt(joy.GetX() * joy.GetX() + joy.GetY() * joy.GetY())
+
+    // Going backwards
+    if (joy.GetY() < 0) {
+        distance = distance * -1;
+    }
+
     return Math.floor(distance);
 }
 
