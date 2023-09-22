@@ -11,62 +11,11 @@
     <button id="discoModeButton">Disco mode</button>
     <button id="cameraDirectionButton">Camera direction</button>
     <button id="automaticModeButton">Automatic mode</button>
+
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
-
-    <script>
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCswWkR6qrP4qxYuDQ5iB6huCRQQetAOyQ",
-            authDomain: "erni-hackathon.firebaseapp.com",
-            databaseURL: "https://erni-hackathon-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "erni-hackathon",
-            storageBucket: "erni-hackathon.appspot.com",
-            messagingSenderId: "164169323198",
-            appId: "1:164169323198:web:a1b378470ca81d330244ef"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-
-        // Acceleration
-        let counter = 0;
-        const accelerationButton = document.getElementById("accelerationButton");
-        accelerationButton.addEventListener("click", () => {
-            database.ref("/car/acceleration").set(counter++);
-        });
-
-        // Car direction
-        let carDirection = 0;
-        const carDirectionButton = document.getElementById("carDirectionButton");
-        carDirectionButton.addEventListener("click", () => {
-            database.ref("/car/direction").set(carDirection++);
-        });
-
-        // Disco mode
-        let discoMode = false;
-        const discoModeButton = document.getElementById("discoModeButton");
-        discoModeButton.addEventListener("click", () => {
-            discoMode = !discoMode;
-            database.ref("/car/disco_mode").set(discoMode);
-        });
-
-        // Camera direction
-        let cameraDirection = 0;
-        const cameraDirectionButton = document.getElementById("cameraDirectionButton");
-        cameraDirectionButton.addEventListener("click", () => {
-            database.ref("/camera/direction").set(cameraDirection++);
-        });
-
-        // Acceleration
-        let automaticMode = false;
-        const automaticModeButton = document.getElementById("automaticModeButton");
-        automaticModeButton.addEventListener("click", () => {
-            automaticMode = !automaticMode;
-            database.ref("/car/automatic_mode").set(automaticMode);
-        });
-    </script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/event-listeners.js"></script>
 </body>
 
 </html>
