@@ -12,3 +12,12 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
+
+/**
+ * Update value in Firebase
+ * @param {*} path route to update in firebase
+ * @param {*} value value to set in that route
+ */
+function updateValue(path, value) {
+    database.ref(path).set(value);
+}
