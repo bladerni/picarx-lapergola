@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pergola HACK</title>
+</head>
+
+<body>
+    <button id="accelerateButton">Accelerate</button>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCswWkR6qrP4qxYuDQ5iB6huCRQQetAOyQ",
+            authDomain: "erni-hackathon.firebaseapp.com",
+            databaseURL: "https://erni-hackathon-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "erni-hackathon",
+            storageBucket: "erni-hackathon.appspot.com",
+            messagingSenderId: "164169323198",
+            appId: "1:164169323198:web:a1b378470ca81d330244ef"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        let counter = 0;
+        const accelerateButton = document.getElementById("accelerateButton");
+        accelerateButton.addEventListener("click", () => {
+            // Send "1" to the "/accelerate" path in the Firebase Realtime Database
+            database.ref("/accelerate").set(counter++);
+        });
+    </script>
+</body>
+
+</html>
