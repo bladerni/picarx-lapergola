@@ -7,6 +7,10 @@
 
 <body>
     <button id="accelerateButton">Accelerate</button>
+    <button id="carDirectionButton">Car direction</button>
+    <button id="discoModeButton">Disco mode</button>
+    <button id="cameraDirectionButton">Camera direction</button>
+    <button id="automaticModeButton">Automatic mode</button>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
 
@@ -26,11 +30,41 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
+        // Accelerate
         let counter = 0;
         const accelerateButton = document.getElementById("accelerateButton");
         accelerateButton.addEventListener("click", () => {
-            // Send "1" to the "/accelerate" path in the Firebase Realtime Database
             database.ref("/accelerate").set(counter++);
+        });
+
+        // Car direction
+        let carDirection = 0;
+        const carDirectionButton = document.getElementById("carDirectionButton");
+        carDirectionButton.addEventListener("click", () => {
+            database.ref("/car_direction").set(carDirection++);
+        });
+
+        // Disco mode
+        let discoMode = false;
+        const discoModeButton = document.getElementById("discoModeButton");
+        discoModeButton.addEventListener("click", () => {
+            discoMode = !discoMode;
+            database.ref("/disco_mode").set(discoMode);
+        });
+
+        // Camera direction
+        let cameraDirection = 0;
+        const cameraDirectionButton = document.getElementById("cameraDirectionButton");
+        cameraDirectionButton.addEventListener("click", () => {
+            database.ref("/camera_direction").set(cameraDirection++);
+        });
+
+        // Accelerate
+        let automaticMode = false;
+        const automaticModeButton = document.getElementById("automaticModeButton");
+        automaticModeButton.addEventListener("click", () => {
+            automaticMode = !automaticMode;
+            database.ref("/automatic_mode").set(automaticMode);
         });
     </script>
 </body>
