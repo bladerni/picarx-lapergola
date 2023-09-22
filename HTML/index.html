@@ -20,33 +20,77 @@
 
 <body>
     <div class="container text-center">
-        <div class="row">
-            <div class="col">
+        <div class="row g-0">
+            <div class="col-2 button-box">
                 <div class="row">
                     <div class="">
 
                     </div>
                 </div>
-                <div id="cameraJoy" style="width:200px;height:200px;margin-bottom:20px;"></div>
+                <div id="cameraJoy" style="width:200px;height:200px;margin-bottom:20px; margin: 0 auto;"></div>
             </div>
-            <div class="col">
+            <div class="col-8">
                 <div class="display">
 
                 </div>
             </div>
-            <div class="col">
-                <div id="movementJoy" style="width:200px;height:200px;margin-bottom:20px;"></div>
+            <div class="col-2 button-box">
+                <div id="movementJoy" style="width:200px;height:200px;margin-bottom:20px; margin: 0 auto;"></div>
             </div>
         </div>
     </div>
     <script type="text/javascript">
-        let colorConfig = {internalFillColor: '#666', internalStrokeColor: '#444', externalFillColor: '#666', externalStrokeColor: '#444'};
+        let colorConfig = { internalFillColor: '#666', internalStrokeColor: '#444', externalFillColor: '#666', externalStrokeColor: '#444' };
         var cameraJoy = new JoyStick('cameraJoy', colorConfig);
         var movementJoy = new JoyStick('movementJoy', colorConfig);
-        setInterval(function () { 
-            console.log("Camera: ", cameraJoy.GetX(), cameraJoy.GetY());
-            console.log("Movement: ", movementJoy.GetX(), movementJoy.GetY());
-         }, 50);
+
+        let lastCameraJoy = groupJoystickInfo(cameraJoy);
+        let lastMovementJoy = groupJoystickInfo(movementJoy);
+
+        setInterval(function () {
+
+            //CAMERA JOYSTICK
+            let currentCameraJoy = groupJoystickInfo(cameraJoy);
+            if (!deepEqual(currentCameraJoy, lastCameraJoy)) {
+                lastCameraJoy = currentCameraJoy;
+                //TODO: Send stuff
+                console.log("Camera Joy: ", lastCameraJoy);
+            }
+
+            //MOVEMENT JOYSTICK
+            let currentMovementJoy = groupJoystickInfo(movementJoy);
+            currentMovementJoy.distance = Math.min(100.0, getDistance(movementJoy));
+            if (!deepEqual(currentMovementJoy, lastMovementJoy)) {
+                lastMovementJoy = currentMovementJoy;
+                //TODO: Send stuff
+                console.log("Movement Joy: ", lastMovementJoy);
+            }
+
+        }, 50);
+
+
+
+        function groupJoystickInfo(joy) {
+            return { angle: getAngle(joy) };
+        }
+
+        function getAngle(joy) {
+            let rad = Math.atan2(joy.GetY(), joy.GetX()); // In radians
+            let deg = rad * (180 / Math.PI);
+            return deg;
+        }
+
+        function getDistance(joy) {
+            return Math.sqrt(joy.GetX() * joy.GetX() + joy.GetY() * joy.GetY());
+        }
+
+        function deepEqual(x, y) {
+            return (x && y && typeof x === 'object' && typeof y === 'object') ?
+                (Object.keys(x).length === Object.keys(y).length) &&
+                Object.keys(x).reduce(function (isEqual, key) {
+                    return isEqual && deepEqual(x[key], y[key]);
+                }, true) : (x === y);
+        }
 
     </script>
 </body>
