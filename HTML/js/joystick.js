@@ -1,4 +1,4 @@
-let colorConfig = { internalFillColor: '#666', internalStrokeColor: '#444', externalFillColor: '#666', externalStrokeColor: '#444' };
+let colorConfig = { internalFillColor: '#222', internalStrokeColor: '#111', externalFillColor: '#222', externalStrokeColor: '#333' };
 var cameraJoy = new JoyStick('cameraJoy', colorConfig);
 var movementJoy = new JoyStick('movementJoy', colorConfig);
 
