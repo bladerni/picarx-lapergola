@@ -38,8 +38,11 @@ To make our critter come to life, we are using the following technology stack:
 
 ## Repository Structure
 
-- **/HMTL**: Contains the frontend code for the control site.
+- **/HMTL**: Contains the frontend code. User interface where you can control the camera and movement of the robot through internet. There is also one button to enable line tracking mode.
+- **Java/com.udpserver**: Java server we tested to stream the camera to internet (did not work)
 - **/robot**: Houses the Python code responsible for interacting with Firebase and controlling the car.
+    1. disco_mode_final.py: Makes the robot dance and move while playing a funny song
+    2. handler.py: Listens to Firebase changes like camera angle or car movement. It also contains the line tracker implementation.
 
 Thank you for joining us on this exciting journey as we bring our critter to life. Let's make this hackathon a success together! 💡🤖🌟
 
