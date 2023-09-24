@@ -5,10 +5,27 @@ html body {
 .button {
     width: 3rem;
     height: 3rem;
-    background-color: #444;
+    background-color: #222;
     border: none;
     border-radius: 2rem;
     position: absolute;
+}
+
+.floating-wrapper{
+    position: absolute;
+    left: 50%;
+    top: 64px;
+}
+
+.floating-container{
+    text-align: center;
+    background: black;
+    padding: 16px;
+    border-radius: 4px;
+    color: white;
+    position: relative; 
+    opacity: 0.8;
+    left: -50%;
 }
 
 .button:hover {
@@ -101,9 +118,10 @@ html body {
 }
 
 .button-img {
-    width: 90%;
-    height: 70%;
-    margin: 0 auto 7px auto;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto 2px auto;
+    opacity: 0.7;
 }
 
 @media only screen and (max-width: 768px) {
