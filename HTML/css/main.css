@@ -1,9 +1,104 @@
-.display {
-    background-color: #333;
-    height: 560px;
-    width: 100%;
+html body{
+    background-color: #222;
 }
 
-.button-box {
-    background-color: #AAA;
+.button{
+    width: 3rem;
+    height: 3rem;
+    background-color: #444;
+    border: none;
+    border-radius: 2rem;
+    position: absolute;
+}
+
+.button:hover{
+    background-color: #888;
+}
+
+.switch-wrapper{
+    display: flex;
+    margin: 32px;
+}
+
+.frame{
+    width: 100%;
+    height: calc(100% - 5px);
+}
+
+.left-controller{
+    background-color: #009bb3;
+    border-radius: 32px 0 0 32px;
+}
+
+.left-joy{
+    position: absolute;
+    top: calc(20%);
+}
+
+
+.button-container{
+    position: relative;
+    top: calc(70% - 100px);
+    height: 200px;
+    width: 200px;
+}
+
+.up{
+    left: calc(50% - 24px);
+    top: calc(25% - 24px);
+}
+
+.down{
+    left: calc(50% - 24px);
+    top: calc(75% - 24px);
+}
+
+.left{
+    left: calc(25% - 24px);
+    top: calc(50% - 24px);
+}
+
+.right{
+    left: calc(75% - 24px);
+    top: calc(50% - 24px);
+}
+
+.display {
+    padding: 10px;
+    background: #111;
+    border: 1px dashed;
+    overflow: auto;
+    max-width: 100%;
+    height: calc(100vh - 64px);
+    flex-grow: 1;
+}
+
+
+.right-controller{
+    border-radius: 0 32px 32px 0;
+    background-color: #b9000f;
+}
+
+.right-joy{
+    position: relative;
+    top: calc(70% - 200px);
+}
+
+.home-button{
+    position: relative;
+    top: calc(80% - 200px);
+}
+
+.button-img{
+    width: 90%;
+    height: 70%;
+    margin-left: -0.13rem;
+    margin-top: 0rem;
+}
+
+.home-button > .button-img{
+    width: 140%;
+    height: 120%;
+    margin-left: -0.478rem;
+    margin-top: -0.27rem;
 }
