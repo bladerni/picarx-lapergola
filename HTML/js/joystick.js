@@ -93,3 +93,14 @@ function deepEqual(x, y) {
             return isEqual && deepEqual(x[key], y[key]);
         }, true) : (x === y);
 }
+
+function activateAutomaticMode(e) {
+    robotData.car.automatic_mode = !robotData.car.automatic_mode;
+    if (robotData.car.automatic_mode) {
+        e.style = "background-color: #76db29;"
+    } else {
+        e.style = ""
+    }
+
+    updateValue("/", robotData);
+}
