@@ -1,5 +1,6 @@
 from picarx import Picarx
 from time import sleep
+from robot_hat import TTS
 import readchar
 import pygame
 import threading
@@ -10,7 +11,7 @@ px = Picarx()
 move_thread_running = True
 
 def play_song():
-    audio_file = "mario_star_song.mp3"
+    audio_file = "disco_mode_song.mp3"
 
     pygame.init()
     pygame.mixer.init()
@@ -102,10 +103,19 @@ def move_camera():
         
         px.set_cam_pan_angle(0)
         sleep(sleep_time)
+        
+def introduction():
+    speech1 = "Hello my name is BRASCADA"
+    speech2 = "and i am the new host of ERNI Valencia office"
+    tts_robot = TTS()
+    tts_robot.say(speech1)
+    tts_robot.say(speech2)
 
 def main():
     global move_thread_running
-
+    
+    introduction()
+    
     song_thread = threading.Thread(target=play_song)
     move_car_thread = threading.Thread(target=move_car)
     move_camera_thread = threading.Thread(target=move_camera)
@@ -135,5 +145,8 @@ if __name__ == "__main__":
         main()
     except Exception as e:
         print("error:%s" % e)
+        move_thread_running = False  # Detener el bucle de move()
+        px.stop()
     finally:
+        move_thread_running = False
         px.stop()
