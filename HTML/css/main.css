@@ -1,8 +1,8 @@
-html body{
+html body {
     background-color: #222;
 }
 
-.button{
+.button {
     width: 3rem;
     height: 3rem;
     background-color: #444;
@@ -11,54 +11,61 @@ html body{
     position: absolute;
 }
 
-.button:hover{
+.button:hover {
     background-color: #888;
 }
 
-.switch-wrapper{
+.switch-wrapper {
     display: flex;
     margin: 32px;
 }
 
-.frame{
+.joy {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+}
+
+.frame {
     width: 100%;
     height: calc(100% - 5px);
 }
 
-.left-controller{
+.left-controller {
     background-color: #009bb3;
     border-radius: 32px 0 0 32px;
 }
 
-.left-joy{
+.left-joy {
     position: absolute;
     top: calc(20%);
 }
 
 
-.button-container{
+.button-container {
     position: relative;
     top: calc(70% - 100px);
     height: 200px;
     width: 200px;
 }
 
-.up{
+.up {
     left: calc(50% - 24px);
     top: calc(25% - 24px);
 }
 
-.down{
+.down {
     left: calc(50% - 24px);
     top: calc(75% - 24px);
 }
 
-.left{
+.left {
     left: calc(25% - 24px);
     top: calc(50% - 24px);
 }
 
-.right{
+.right {
     left: calc(75% - 24px);
     top: calc(50% - 24px);
 }
@@ -74,31 +81,49 @@ html body{
 }
 
 
-.right-controller{
+.right-controller {
     border-radius: 0 32px 32px 0;
     background-color: #b9000f;
 }
 
-.right-joy{
+.right-joy {
     position: relative;
     top: calc(70% - 200px);
 }
 
-.home-button{
+.home-button {
     position: relative;
     top: calc(80% - 200px);
 }
 
-.button-img{
+.button-img {
     width: 90%;
     height: 70%;
-    margin-left: -0.13rem;
-    margin-top: 0rem;
+    margin: 0 auto 7px auto;
 }
 
-.home-button > .button-img{
-    width: 140%;
-    height: 120%;
-    margin-left: -0.478rem;
-    margin-top: -0.27rem;
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+
+    .joy {
+        width: 100px;
+        height: 100px;
+    }
+
+    .button-container {
+        height: 100px;
+        width: 100px;
+        top: calc(70% - 50px);
+        left: 10%;
+    }
+
+    .home-button {
+        top: calc(80% - 100px);
+    }
+    
+    .button {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
 }
