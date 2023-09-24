@@ -34,7 +34,7 @@ html body {
 
 .switch-wrapper {
     display: flex;
-    margin: 32px;
+    margin: 16px 48px;
 }
 
 .joy {
@@ -51,8 +51,7 @@ html body {
 
 .left-controller {
     background-color: #009bb3;
-    /* border-bottom: 32px solid #007486; */
-    box-shadow: 0 24px 0 24px #007486;
+    box-shadow: -16px 16px 0 16px #007486;
     border-radius: 32px 0 0 32px;
 }
 
@@ -148,7 +147,7 @@ html body {
 
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
     html body  {
       background: blue;
     }
@@ -164,4 +163,4 @@ html body {
     html body  {
       background: green;
     }
-  }
+  } */
