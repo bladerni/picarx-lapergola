@@ -2,13 +2,14 @@ let colorConfig = { internalFillColor: '#222', internalStrokeColor: '#111', exte
 var cameraJoy = new JoyStick('cameraJoy', colorConfig);
 var movementJoy = new JoyStick('movementJoy', colorConfig);
 
-let lastCameraJoy = groupJoystickInfo(cameraJoy);
-let lastMovementJoy = groupJoystickInfo(movementJoy);
+let lastCameraJoy = cameraDirectionConversion(cameraJoy);
+let lastMovementJoy = movementAngleConversion(movementJoy);
 
 let shouldSendData = true;
 const robotData = {
     camera: {
-        direction: 0
+        x: 0,
+        y: 0
     },
     car: {
         acceleration: 0,
@@ -21,28 +22,24 @@ const robotData = {
 setInterval(function () {
 
     //CAMERA JOYSTICK
-    let currentCameraJoy = groupJoystickInfo(cameraJoy);
+    let currentCameraJoy = cameraDirectionConversion(cameraJoy);
     if (!deepEqual(currentCameraJoy, lastCameraJoy)) {
         lastCameraJoy = currentCameraJoy;
 
         shouldSendData = true;
-
-        console.log("Camera Joy: ", lastCameraJoy);
     }
 
     //MOVEMENT JOYSTICK
-    let currentMovementJoy = groupJoystickInfo(movementJoy);
+    let currentMovementJoy = movementAngleConversion(movementJoy);
     currentMovementJoy.distance = Math.min(100.0, getDistance(movementJoy));
     if (!deepEqual(currentMovementJoy, lastMovementJoy)) {
         lastMovementJoy = currentMovementJoy;
 
-        shouldSendData = true;;
-
-        console.log("Movement Joy: ", lastMovementJoy);
+        shouldSendData = true;
     }
 
     if (shouldSendData) {
-        robotData.camera.direction = lastCameraJoy.angle;
+        robotData.camera = lastCameraJoy;
 
         robotData.car.acceleration = lastMovementJoy.distance;
         // -7 because the car rotation is a bit offset
@@ -55,23 +52,30 @@ setInterval(function () {
 }, 50);
 
 
-
-function groupJoystickInfo(joy) {
-    return { angle: getAngle(joy) };
-}
-
 /**
  * Map degrees to range [-30, 30] (wheels left and right)
- * @param {*} deg 
+ * @param {*} joy 
  * @returns 
  */
-function getAngle(joy) {
+function movementAngleConversion(joy) {
     // Remove unnecessary decimals
     xValue = Math.floor(joy.GetX());
 
     deg = (30 * xValue) / 100;
 
-    return deg;
+    return { angle: deg };
+}
+
+/**
+ * Map degrees to range [0, 360]
+ * @param {*} joy 
+ * @returns 
+ */
+function cameraDirectionConversion(joy) {
+    const mappedX = (35 * joy.GetX()) / 100;
+    const mappedY = (35 * joy.GetY()) / 100;
+
+    return { x: mappedX, y: mappedY };
 }
 
 

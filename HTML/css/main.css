@@ -11,19 +11,19 @@ html body {
     position: absolute;
 }
 
-.floating-wrapper{
+.floating-wrapper {
     position: absolute;
     left: 50%;
     top: 64px;
 }
 
-.floating-container{
+.floating-container {
     text-align: center;
     background: black;
     padding: 16px;
     border-radius: 4px;
     color: white;
-    position: relative; 
+    position: relative;
     opacity: 0.8;
     left: -50%;
 }
@@ -92,7 +92,6 @@ html body {
     padding: 10px;
     background: #111;
     border: 1px dashed;
-    overflow: auto;
     max-width: 100%;
     height: calc(100vh - 64px);
     flex-grow: 1;
@@ -139,7 +138,7 @@ html body {
     .home-button {
         top: calc(80% - 100px);
     }
-    
+
     .button {
         width: 1.5rem;
         height: 1.5rem;
