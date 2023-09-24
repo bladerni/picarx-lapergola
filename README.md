@@ -16,7 +16,7 @@ Every journey comes with its share of challenges, and we are no exception. We've
 
 - The first SD Card burning out, reminiscent of Valencian Fallas!
 - Issues with package installations that tested our problem-solving skills.
-- Formatted Raspberry PI: While trying to test the engines with voltage, we screwed something up and had to reinstall everything :(
+- Formatted Raspberry PI: While trying to test the engines with voltage, we screwed something up and the Raspberry PI 4 died. We had to use one Raspberry PI 3 from one of our teammates!
 
 But remember, La Pergola Team doesn't surrender! We believe in finding solutions for every problem that comes our way. With determination and teamwork, we overcomed these obstacles.
 
