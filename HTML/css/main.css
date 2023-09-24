@@ -103,8 +103,6 @@ html body {
 }
 
 @media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-
     .joy {
         width: 100px;
         height: 100px;
@@ -127,3 +125,21 @@ html body {
     }
 
 }
+
+@media (max-width: 800px) {
+    html body  {
+      background: blue;
+    }
+  }
+  
+  @media (min-width: 800px) and (max-width: 1280px) {
+    html body  {
+      background: red;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    html body  {
+      background: green;
+    }
+  }
