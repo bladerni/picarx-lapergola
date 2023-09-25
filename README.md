@@ -2,6 +2,10 @@
 
 Welcome to the La Pergola Team's GitHub repository for the hackathon! We are excited to share our journey as we work hard to complete the hackathon, assemble our critter, prepare the control site, and bring it to life! 🚀
 
+![image](https://github.com/bladerni/picarx-lapergola/assets/28304354/52e7a539-ec67-48f8-a886-e7ce15abe732)
+
+[Here](https://bladerni.github.io/picarx-lapergola/) you can find the link to the page.
+
 ## About Us
 
 La Pergola Team is a group of enthusiastic individuals from Valencia ERNI's office who are passionate about technology and are committed to overcoming challenges. We believe in teamwork, dedication, and creativity to achieve our goals.
