@@ -16,7 +16,7 @@ Every journey comes with its share of challenges, and we are no exception. We've
 
 - The first SD Card burning out, reminiscent of Valencian Fallas!
 - Issues with package installations that tested our problem-solving skills.
-- Formatted Raspberry PI: While trying to test the engines with voltage, we screwed something up and had to reinstall everything :(
+- Formatted Raspberry PI: While trying to test the engines with voltage, we screwed something up and the Raspberry PI 4 died. We had to use one Raspberry PI 3 from one of our teammates!
 
 But remember, La Pergola Team doesn't surrender! We believe in finding solutions for every problem that comes our way. With determination and teamwork, we overcomed these obstacles.
 
@@ -38,8 +38,11 @@ To make our critter come to life, we are using the following technology stack:
 
 ## Repository Structure
 
-- **/HMTL**: Contains the frontend code for the control site.
+- **/HMTL**: Contains the frontend code. User interface where you can control the camera and movement of the robot through internet. There is also one button to enable line tracking mode.
+- **Java/com.udpserver**: Java server we tested to stream the camera to internet (did not work)
 - **/robot**: Houses the Python code responsible for interacting with Firebase and controlling the car.
+    1. disco_mode_final.py: Makes the robot dance and move while playing a funny song
+    2. handler.py: Listens to Firebase changes like camera angle or car movement. It also contains the line tracker implementation.
 
 Thank you for joining us on this exciting journey as we bring our critter to life. Let's make this hackathon a success together! 💡🤖🌟
 
