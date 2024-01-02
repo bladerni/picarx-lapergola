@@ -24,10 +24,6 @@ Every journey comes with its share of challenges, and we are no exception. We've
 
 But remember, La Pergola Team doesn't surrender! We believe in finding solutions for every problem that comes our way. With determination and teamwork, we overcomed these obstacles.
 
-## Refueling with World Paella Day
-
-During our intense coding sessions, we were fortunate enough to have some delicious food from the "World Paella Day" in the fridge. It's these small moments of respite that keep us energized and motivated to keep going. Let's tackle the challenge with renewed enthusiasm!
-
 ## Technology Stack
 
 To make our critter come to life, we are using the following technology stack:
@@ -47,6 +43,14 @@ To make our critter come to life, we are using the following technology stack:
 - **/robot**: Houses the Python code responsible for interacting with Firebase and controlling the car.
     1. disco_mode_final.py: Makes the robot dance and move while playing a funny song
     2. handler.py: Listens to Firebase changes like camera angle or car movement. It also contains the line tracker implementation.
+
+## Moving the robot
+
+To start moving the robot you need to:
+
+- Access through SSH (or connecting an HDMI) to the Raspberry
+- Login with user "pi"
+- Go to `cd remote-handler` and execute `python3.7 handler.py`
 
 Thank you for joining us on this exciting journey as we bring our critter to life. Let's make this hackathon a success together! 💡🤖🌟
 
